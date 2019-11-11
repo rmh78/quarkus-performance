@@ -1,2 +1,2 @@
 #!/bin/sh
-./plot-test.sh "java -jar ../quarkus-getting-started/target/*-runner.jar -Xmn16m -Xmx128m" http://localhost:8080/hello myplot-java.png
+./plot-test.sh "java -Xmn16m -Xmx32m -jar ../demo1/target/demo1-1.0.0-SNAPSHOT-runner.jar" http://localhost:8080/hello myplot-java.png
