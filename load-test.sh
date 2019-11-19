@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 $@ &
 MY_PID=$!
 N=10000
@@ -7,16 +7,12 @@ FORMAT_STRING="%10s %10s %10s %10s %10s\n"
 REAL_TIME_SUM=0
 i="1"
 ITER=10
-sleep 2
-
 while [ $i -lt $(($ITER + 1)) ]
 do
-  COMMAND="curl -s http://localhost:8080/hello -o /dev/null"
+  COMMAND="curl -s http://localhost:8080/quotes/random?[1-$N] -o /dev/null"
   REAL_TIME=$({ time $COMMAND ; } 2>&1 | grep real | sed -E 's/[^0-9\]+//g' | sed 's/^0*//')
   REAL_TIME_SUM=$(($REAL_TIME_SUM+$REAL_TIME))
   CPU_TIME_TOTAL="$(ps -p $MY_PID -o 'time=' | awk -F'[:.]+' '{t=$3*10+1000*($2+60*$1); print t}')"
-  echo $CPU_TIME_TOTAL
-
   CPU_TIME=$((CPU_TIME_TOTAL - LAST_TIME))
   LAST_TIME=$CPU_TIME_TOTAL
   RSS=$(ps -p $MY_PID -o 'rss=')
@@ -31,8 +27,6 @@ do
   printf "$FORMAT_STRING" $i $CPU_TIME $REQ_PER_CPUS $RSS $REQ_PER_MBS
   i=$[$i+1]
 done
-
-echo "end"
 MEMORY_MS=$(($RSS*$REAL_TIME_SUM/1000))
 REQ_PER_CPUS=$(($ITER*$N*1000/$CPU_TIME_TOTAL))
 REQ_PER_MBS=$(($ITER*$N/$MEMORY_MS))
