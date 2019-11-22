@@ -1,7 +1,2 @@
 demo-payara/target
-!demo-quarkus/target/*-microbundle.jar
-
 demo-quarkus/target
-!demo-quarkus/target/*-runner
-!demo-quarkus/target/*-runner.jar
-!demo-quarkus/target/lib/*

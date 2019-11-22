@@ -1,1 +1,1 @@
-docker run -it --rm --mount type=bind,source="%CD%",target=/work/src quarkus:performance
+docker run -it --rm --mount type=bind,source="%CD%",target=/work quarkus:performance
