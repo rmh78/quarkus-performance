@@ -1,9 +1,9 @@
 FROM registry.access.redhat.com/ubi8/ubi
 
-ENV http_proxy=http://host.docker.internal:3128
-ENV https_proxy=${http_proxy}
-ENV HTTP_PROXY=${http_proxy}
-ENV HTTPS_PROXY=${http_proxy}
+#ENV http_proxy=http://host.docker.internal:3128
+#ENV https_proxy=${http_proxy}
+#ENV HTTP_PROXY=${http_proxy}
+#ENV HTTPS_PROXY=${http_proxy}
 ENV NO_PROXY=localhost,127.0.0.1
 
 ENV MAVEN_VERSION=3.6.2 
@@ -41,8 +41,8 @@ RUN curl -sL https://github.com/shyiko/jabba/raw/master/install.sh | bash && . ~
     && curl -o /tmp/${MAVEN_TARBALL} ${MAVEN_BASE_URL}/${MAVEN_TARBALL} \
     && tar -xf /tmp/${MAVEN_TARBALL} -C ${MAVEN_HOME} --strip 1 \
     && ln -s ${MAVEN_HOME}/bin/mvn /usr/bin/mvn \
-    && cp /tmp/settings_pxproxy.xml ${MAVEN_HOME}/conf/settings.xml 
-    #&& cp /tmp/settings_noproxy.xml ${MAVEN_HOME}/conf/settings.xml 
+    #&& cp /tmp/settings_pxproxy.xml ${MAVEN_HOME}/conf/settings.xml 
+    && cp /tmp/settings_noproxy.xml ${MAVEN_HOME}/conf/settings.xml 
 
 ENV GRAALVM_HOME=/root/.jabba/jdk/graalvm@19.2.1
 #ENV GRAALVM_HOME=/root/.jabba/jdk/graalvm@19.3.0
