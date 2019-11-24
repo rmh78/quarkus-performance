@@ -1,6 +1,12 @@
-# Quarkus Performance Measurements
+# Comparing the CPU/Memory utilisation of a Quarkus JAX-RS application
 
-Some scripts for memory usage and boot-time measurement.
+Some scripts to measure the CPU and Memory utilisation of JAX-RS appliations.
+The performance test runs inside a docker container.
+
+The test uses two demo projects.
+
+* **demo-payara** contains a simple JAX-RS application packaged as uber-jar with Payara Micro application server
+* **demo-quarkus** contains a simple Quarkus application packaged as jar and additionally compiled as native image using the GraalVM Native Image
 
 ## Prepare and start plot-tests
 
