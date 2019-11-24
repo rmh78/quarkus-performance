@@ -1,14 +1,32 @@
 #!/bin/bash
 
-mkdir -p plots/$1
+export JABBA_HOME="$HOME/.jabba"
 
-./plot-test.sh "java -Xmn128M -Xmx512M -jar demo-payara/target/demo-payara-microbundle.jar" http://localhost:8080/hello plots/$1/plot-payara-micro.png
-sleep 2
+jabba() {
+    local fd3=$(mktemp /tmp/jabba-fd3.XXXXXX)
+    (JABBA_SHELL_INTEGRATION=ON $HOME/.jabba/bin/jabba "$@" 3>| ${fd3})
+    local exit_code=$?
+    eval $(cat ${fd3})
+    rm -f ${fd3}
+    return ${exit_code}
+}
 
-./plot-test.sh "java -Xmn16M -Xmx32M -jar demo-quarkus/target/demo-quarkus-1.0.0-SNAPSHOT-native-image-source-jar/*-runner.jar" http://localhost:8080/hello plots/$1/plot-quarkus-java.png
-sleep 2
+DEMO_URL=http://localhost:8080/hello
 
-./plot-test.sh "demo-quarkus/target/demo-quarkus-1.0.0-SNAPSHOT-runner -Xmn8M -Xmx128M" http://localhost:8080/hello plots/$1/plot-quarkus-native.png
-sleep 2
+# iterate over all installed java version
+jabba ls | while read CURRENT_JAVA; do
 
-: ${1?"Usage: $0 <ENVIRONMENT_NAME>"}
+    jabba use $CURRENT_JAVA
+    echo $(java -version)
+
+    # run payara-micro test
+    ./plot-test.sh "java -Xmn128M -Xmx512M -jar demo-payara/target/demo-payara-microbundle.jar --noCluster" $DEMO_URL payara-micro-$CURRENT_JAVA "Payara Micro 5.193 ($CURRENT_JAVA)"
+    sleep 2
+
+    # run quarkus-java test
+    ./plot-test.sh "java -Xmn16M -Xmx32M -jar demo-quarkus/target/demo-quarkus-1.0.0-SNAPSHOT-native-image-source-jar/*-runner.jar" $DEMO_URL quarkus-java-$CURRENT_JAVA "Quarkus JAVA ($CURRENT_JAVA)"
+    sleep 2
+done
+
+# run quarkus native image test
+./plot-test.sh "demo-quarkus/target/demo-quarkus-1.0.0-SNAPSHOT-runner -Xmn8M -Xmx128M" $DEMO_URL quarkus-native "Quarkus Native Image"

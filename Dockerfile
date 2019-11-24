@@ -46,6 +46,8 @@ RUN curl -sL https://github.com/shyiko/jabba/raw/master/install.sh | bash && . ~
     #&& cp /tmp/settings_pxproxy.xml ${MAVEN_HOME}/conf/settings.xml 
     && cp /tmp/settings_noproxy.xml ${MAVEN_HOME}/conf/settings.xml 
 
+COPY ./psrecord-patch/main.py /usr/local/lib/python3.6/site-packages/psrecord/
+
 ENV GRAALVM_HOME=/root/.jabba/jdk/graalvm@19.2.1
 #ENV GRAALVM_HOME=/root/.jabba/jdk/graalvm@19.3.0
 
