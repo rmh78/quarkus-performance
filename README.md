@@ -14,7 +14,9 @@ The test uses two demo projects.
 2) Build the docker image with ```env_build.sh``` or ```env_build.cmd```
 3) Run the image in a new docker container with ```env_run.sh``` or ```env_run.cmd```
 4) Build the demo projects inside the docker container with ```./build.sh```
-5) Run plot tests inside the docker container with ```./test-all.sh```
+5) Run the tests inside the docker container with ```./test-all.sh```
+6) Plots are generated to directory ```plots```
+7) Logs are generated to directory ```logs```
 
 ## Test scenario
 

@@ -1,3 +1,5 @@
+# script origin at https://github.com/jkremser/micronaut-app-k8s/blob/master/plot-test.sh
+
 #!/bin/bash
 echo "### utilisation test start"
 echo $@
