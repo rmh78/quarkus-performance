@@ -6,28 +6,56 @@ Some scripts for memory usage and boot-time measurement.
 
 1) Modify the **Dockerfile** (look for PROXY) to use a proxy server or not
 2) Build the docker image with ```env_build.sh``` or ```env_build.cmd```
-3) Run the docker image with ```env_run.sh``` or ```env_run.cmd```
-4) Build the demo projects inside docker with ```./build.sh```
-5) Run plot tests with ```./plot-test-all.sh```
+3) Run the image in a new docker container with ```env_run.sh``` or ```env_run.cmd```
+4) Build the demo projects inside the docker container with ```./build.sh```
+5) Run plot tests inside the docker container with ```./plot-test-all.sh```
 
 ## Test scenario
 
 The **plot-test** consists of the following actions:
 
-* starting the application or server
-* start a loop (3 iterations)
+* starting the application (simple JAX-RS application)
+* start a loop with 3 iterations
   * sleep 1 second
-  * send http request to the JAX-RS endpoint
+  * send http request using curl to the JAX-RS endpoint
 
 ## Plots
 
-![Quarkus Native Image](plots/quarkus-native.png)
-![Quarkus Java](plots/quarkus-java-adopt-openj9@1.8.0-232.png)
-![Payara Micro](plots/payara-micro-adopt-openj9@1.8.0-232.png)
+All plots are generated on my Notebook inside the running docker container.
 
-## Frameworks and Libraries
+Docker Host Machine:
+
+* MacbookPro
+* CPU: 2,4 GHz Intel Core i5 (4 cores)
+* RAM: 4 GB 1067 MHz DDR3
+
+Docker Engine Configuration:
+
+* CPUs: 2
+* Memory: 3 GB
+
+### Quarkus via GraalVM Native Image
+
+![Quarkus via GraalVM Native Image](plots/quarkus-native.png)
+
+### Quarkus via Java Runtime
+
+| | | |
+|-|-|-|
+| ![](plots/quarkus-java-adopt-openj9@1.8.0-232.png) | ![](plots/quarkus-java-graalvm@19.2.1.png) | ![](plots/quarkus-java-zulu@1.8.232.png) |
+
+### Payara Micro via Java Runtime
+
+| | | |
+|-|-|-|
+| ![](plots/payara-micro-adopt-openj9@1.8.0-232.png) | ![](plots/payara-micro-graalvm@19.2.1.png) | ![](plots/payara-micro-zulu@1.8.232.png) |
+
+## Used Runtimes, Frameworks and Libraries
 
 * Quarkus - <https://quarkus.io>
+* GraalVM - <https://www.graalvm.org>
+* OpenJ9 - <https://www.eclipse.org/openj9>
+* Zulu OpenJDK - <https://www.azul.com/products/zulu-community>
 * Payara Micro - <https://www.payara.fish>
 * psrecord - <https://github.com/astrofrog/psrecord>
 * psutil - <https://psutil.readthedocs.io>
