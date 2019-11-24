@@ -1,4 +1,4 @@
-# Comparing the CPU/Memory utilisation of a Quarkus JAX-RS application
+# Comparing the CPU/Memory utilisation of a JAX-RS application (Quarkus, Payara Micro)
 
 Some scripts to measure the CPU and Memory utilisation of JAX-RS appliations.
 The performance test runs inside a docker container.
