@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "### plot-test start"
+echo "### utilisation test start"
 echo $@
 
 $1 &
@@ -19,4 +19,4 @@ do
 done
 
 kill -9 $MY_PID
-echo "### plot-test finished"
+echo "### utilisation test finished"
