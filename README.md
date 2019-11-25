@@ -33,14 +33,13 @@ All plots are generated on my Notebook inside the running docker container.
 
 Docker Host Machine:
 
-* MacbookPro
-* CPU: 2,4 GHz Intel Core i5 (4 cores)
-* RAM: 4 GB 1067 MHz DDR3
+* CPU: Intel i7-8650U 1.90GHz (8 cores)
+* RAM: 16GB
 
 Docker Engine Configuration:
 
-* CPUs: 2
-* Memory: 3 GB
+* CPUs: 4
+* Memory: 8 GB
 
 ### Quarkus via GraalVM Native Image
 
