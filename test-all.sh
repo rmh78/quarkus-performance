@@ -24,9 +24,9 @@ jabba ls | while read CURRENT_JAVA; do
     sleep 2
 
     # run quarkus-java test
-    ./test-single.sh "java -Xmn16M -Xmx32M -jar demo-quarkus/target/demo-quarkus-1.0.0-SNAPSHOT-native-image-source-jar/*-runner.jar" $DEMO_URL quarkus-java-$CURRENT_JAVA "Quarkus (1.0.0.CR2) via Java Runtime ($CURRENT_JAVA)"
+    ./test-single.sh "java -Xmn16M -Xmx32M -jar demo-quarkus/target/demo-quarkus-1.0.0-SNAPSHOT-native-image-source-jar/*-runner.jar" $DEMO_URL quarkus-java-$CURRENT_JAVA "Quarkus (1.0.0.Final) via Java Runtime ($CURRENT_JAVA)"
     sleep 2
 done
 
 # run quarkus native image test
-./test-single.sh "demo-quarkus/target/demo-quarkus-1.0.0-SNAPSHOT-runner -Xmn8M -Xmx128M" $DEMO_URL quarkus-native "Quarkus (1.0.0.CR2) via GraalVM Native Image (19.2.1 CE)"
+./test-single.sh "demo-quarkus/target/demo-quarkus-1.0.0-SNAPSHOT-runner -Xmn8M -Xmx128M" $DEMO_URL quarkus-native "Quarkus (1.0.0.Final) via GraalVM Native Image (19.2.1 CE)"
