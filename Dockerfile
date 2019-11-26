@@ -19,6 +19,8 @@ COPY ./config/maven/settings_pxproxy.xml /tmp/settings_pxproxy.xml
 
 RUN curl -sL https://github.com/shyiko/jabba/raw/master/install.sh | bash && . ~/.jabba/jabba.sh \
     && jabba install zulu@1.8 \
+    && jabba install openjdk-ri@1.8.40 \
+    && jabba install adopt@1.8.0-232 \
     && jabba install adopt-openj9@1.8.0-232 \
     && jabba install graalvm@19.2.1 \
     #&& jabba install graalvm@19.3.0 \

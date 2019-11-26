@@ -49,19 +49,23 @@ Docker Engine Configuration:
 
 | | | |
 |-|-|-|
-| ![](plots/quarkus-java-adopt-openj9@1.8.0-232.png) | ![](plots/quarkus-java-graalvm@19.2.1.png) | ![](plots/quarkus-java-zulu@1.8.232.png) |
+| ![](plots/quarkus-java-adopt@1.8.0-232.png) | ![](plots/quarkus-java-adopt-openj9@1.8.0-232.png) | ![](plots/quarkus-java-graalvm@19.2.1.png) |
+| ![](plots/quarkus-java-openjdk-ri@1.8.40.png) | ![](plots/quarkus-java-zulu@1.8.232.png) | |
 
 ### Payara Micro via Java Runtime
 
 | | | |
 |-|-|-|
-| ![](plots/payara-micro-adopt-openj9@1.8.0-232.png) | ![](plots/payara-micro-graalvm@19.2.1.png) | ![](plots/payara-micro-zulu@1.8.232.png) |
+| ![](plots/payara-micro-adopt@1.8.0-232.png) | ![](plots/payara-micro-adopt-openj9@1.8.0-232.png) | ![](plots/payara-micro-graalvm@19.2.1.png) |
+| ![](plots/payara-micro-openjdk-ri@1.8.40.png) | ![](plots/payara-micro-zulu@1.8.232.png) | |
 
 ## Used Runtimes, Frameworks and Libraries
 
 * Quarkus - <https://quarkus.io>
 * GraalVM - <https://www.graalvm.org>
 * OpenJ9 - <https://www.eclipse.org/openj9>
+* OpenJDK RI - <https://jdk.java.net/java-se-ri/8>
+* Adopt OpenJDK - <https://adoptopenjdk.net/>
 * Zulu OpenJDK - <https://www.azul.com/products/zulu-community>
 * Payara Micro - <https://www.payara.fish>
 * psrecord - <https://github.com/astrofrog/psrecord>
