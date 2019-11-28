@@ -1,1 +1,1 @@
-docker build -t quarkus:performance .
+docker-compose build

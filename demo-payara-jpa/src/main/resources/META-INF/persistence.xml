@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+	version="2.1">
+
+	<persistence-unit name="demo" transaction-type="JTA">
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		<jta-data-source>java:global/jdbc/demo</jta-data-source>
+		
+		<class>de.harald.test.demo.Customer</class>
+
+		<properties>
+			<property name="javax.persistence.schema-generation.database.action" value="drop-and-create" />
+			<property name="javax.persistence.sql-load-script-source" value="db/data.sql"/>
+			
+            <!-- configure logging -->
+            <property name="eclipselink.logging.level" value="WARNING"/>
+			<!--
+			<property name="eclipselink.logging.level.sql" value="FINEST"/>
+			<property name="eclipselink.logging.parameters" value="true"/>
+			-->
+		</properties>
+	</persistence-unit>
+</persistence>

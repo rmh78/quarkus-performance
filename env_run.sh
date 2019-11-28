@@ -1,1 +1,2 @@
-docker run -it --rm --mount type=bind,source="$(pwd)",target=/work quarkus:performance
+docker-compose up -d
+docker exec -it testenv bash

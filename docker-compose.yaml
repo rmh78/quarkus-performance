@@ -1,0 +1,23 @@
+version: "3"
+services:
+      testenv:
+            build: .
+            image: quarkus:performance
+            container_name: testenv
+            stdin_open: true
+            tty: true
+            volumes:
+                  - ./:/work
+            ports:
+                  - "8080:8080"
+            depends_on:
+                  - db
+      db:
+            image: postgres
+            container_name: testdb
+            environment:
+                  - POSTGRES_USER=test
+                  - POSTGRES_PASSWORD=test
+                  - POSTGRES_DB=testdb
+            ports:
+                  - "5432:5432"
