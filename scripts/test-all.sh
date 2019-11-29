@@ -28,11 +28,11 @@ jabba ls | while read CURRENT_JAVA; do
     sleep 2
 
     # run simple quarkus-java test
-    /work/scripts/test-single.sh "java -Xmn16M -Xmx32M -jar /work/demo-quarkus/target/demo-quarkus-1.0.0-SNAPSHOT-native-image-source-jar/*-runner.jar" $DEMO_URL quarkus-java-simple-$CURRENT_JAVA "Quarkus (JAX-RS) via Java Runtime ($CURRENT_JAVA)"
+    /work/scripts/test-single.sh "java -Xmn16M -Xmx32M -jar /work/demo-quarkus/target/*-runner.jar" $DEMO_URL quarkus-java-simple-$CURRENT_JAVA "Quarkus (JAX-RS) via Java Runtime ($CURRENT_JAVA)"
     sleep 2
 
     # run advanced quarkus-java test
-    /work/scripts/test-single.sh "java -Xmn16M -Xmx32M -jar /work/demo-quarkus-jpa/target/demo-quarkus-jpa-1.0.0-SNAPSHOT-native-image-source-jar/*-runner.jar" $DEMO_URL quarkus-java-advanced-$CURRENT_JAVA "Quarkus (JAX-RS + JPA) via Java Runtime ($CURRENT_JAVA)"
+    /work/scripts/test-single.sh "java -Xmn16M -Xmx32M -jar /work/demo-quarkus-jpa/target/*-runner.jar" $DEMO_URL quarkus-java-advanced-$CURRENT_JAVA "Quarkus (JAX-RS + JPA) via Java Runtime ($CURRENT_JAVA)"
     sleep 2
 done
 
