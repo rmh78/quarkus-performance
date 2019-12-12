@@ -11,7 +11,7 @@
 
     <properties>
         <version.javaee>8.0</version.javaee>
-        <version.payara.micro>5.193</version.payara.micro>
+        <version.payara.micro>5.194</version.payara.micro>
 
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -35,7 +35,7 @@
             <plugin>
                 <groupId>fish.payara.maven.plugins</groupId>
                 <artifactId>payara-micro-maven-plugin</artifactId>
-                <version>1.0.5</version>
+                <version>1.0.6</version>
                 <configuration>
                     <payaraVersion>${version.payara.micro}</payaraVersion>
                     <deployWar>true</deployWar>
