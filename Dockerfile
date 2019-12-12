@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi8/ubi
+FROM centos:8
 
 # PROXY: uncomment if behind a proxy (px proxy server on localhost:3128)
 ENV http_proxy=http://host.docker.internal:3128
@@ -17,30 +17,8 @@ ENV MAVEN_CONFIG="${MAVEN_HOME}/.m2"
 COPY ./config/maven/settings_noproxy.xml /tmp/settings_noproxy.xml
 COPY ./config/maven/settings_pxproxy.xml /tmp/settings_pxproxy.xml
 
-RUN curl -sL https://github.com/shyiko/jabba/raw/master/install.sh | bash && . ~/.jabba/jabba.sh \
-    && jabba install zulu@1.8 \
-    && jabba install openjdk-ri@1.8.40 \
-    && jabba install adopt@1.8.0-232 \
-    && jabba install adopt-openj9@1.8.0-232 \
-    && jabba install graalvm@19.2.1 \
-    #&& jabba install graalvm@19.3.0 \
-    && jabba use graalvm@19.2.1 \
-    #&& jabba use graalvm@19.3.0 \
-    && gu install native-image \
-    && jabba alias default zulu@1.8 \
-    # gcc
-    && dnf -y install gcc \
-    && dnf -y install gcc glibc-devel zlib-devel \
-    # ps
-    && dnf -y install procps \
-    # python
-    && dnf -y install python3 \
-    && dnf -y install python3-devel \
-    # psrecord
-    && pip3 install psrecord \
-    && pip3 install matplotlib \
-    # maven
-    && mkdir -p ${MAVEN_HOME} ${MAVEN_HOME}/ref \
+# maven
+RUN mkdir -p ${MAVEN_HOME} ${MAVEN_HOME}/ref \
     && curl -o /tmp/${MAVEN_TARBALL} ${MAVEN_BASE_URL}/${MAVEN_TARBALL} \
     && tar -xf /tmp/${MAVEN_TARBALL} -C ${MAVEN_HOME} --strip 1 \
     && ln -s ${MAVEN_HOME}/bin/mvn /usr/bin/mvn \
@@ -48,9 +26,37 @@ RUN curl -sL https://github.com/shyiko/jabba/raw/master/install.sh | bash && . ~
     && cp /tmp/settings_pxproxy.xml ${MAVEN_HOME}/conf/settings.xml 
     #&& cp /tmp/settings_noproxy.xml ${MAVEN_HOME}/conf/settings.xml 
 
+# tools
+RUN dnf -y install gcc \
+    && dnf -y --enablerepo=PowerTools install libstdc++-static \
+    && dnf -y install glibc-devel zlib-devel \
+    # ps
+    && dnf -y install procps \
+    # python
+    && dnf -y install python3 \
+    && dnf -y install python3-devel \
+    # psrecord
+    && pip3 install psrecord \
+    && pip3 install matplotlib
 COPY ./psrecord-patch/main.py /usr/local/lib/python3.6/site-packages/psrecord/
 
-ENV GRAALVM_HOME=/root/.jabba/jdk/graalvm@19.2.1
+# jabba with jdks
+RUN curl -sL https://github.com/shyiko/jabba/raw/master/install.sh | bash && . ~/.jabba/jabba.sh \
+    && jabba install zulu@1.8 \
+    #&& jabba install openjdk-ri@1.8.40 \
+    #&& jabba install adopt@1.8.0-232 \
+    #&& jabba install adopt-openj9@1.8.0-232 \
+    #&& jabba install graalvm@19.2.1 \
+    #&& jabba install graalvm@19.3.0 \
+    && jabba install graalvm@19.3.0-java8=tgz+https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-19.3.0/graalvm-ce-java8-linux-amd64-19.3.0.tar.gz \
+    #&& jabba use graalvm@19.2.1 \
+    #&& jabba use graalvm@19.3.0 \
+    && jabba use graalvm@19.3.0-java8 \
+    && gu install native-image \
+    && jabba alias default zulu@1.8
+
+#ENV GRAALVM_HOME=/root/.jabba/jdk/graalvm@19.2.1
 #ENV GRAALVM_HOME=/root/.jabba/jdk/graalvm@19.3.0
+ENV GRAALVM_HOME=/root/.jabba/jdk/graalvm@19.3.0-java8
 
 WORKDIR /work

@@ -47,26 +47,18 @@ Docker Engine Configuration:
 
 | Simple Demo (JAX-RS)                 | Advanced Demo (JAX-RS, JSON-B, CDI, JPA, PostgresDB) |
 | ------------------------------------ | ---------------------------------------------------- |
-| ![](plots/quarkus-native-simple.png) | ![](plots/quarkus-native-advanced.png)               |
+| ![](plots/quarkus-native-simple_1.0.1.Final.png) | ![](plots/quarkus-native-advanced_1.0.1.Final.png)               |
 
 ### **(3.2) Quarkus via Java Runtime**
 
 |                   Simple Demo (JAX-RS)                    | Advanced Demo (JAX-RS, JSON-B, CDI, JPA, PostgresDB)        |
 | --------------------------------------------------------- | ----------------------------------------------------------- |
-| ![](plots/quarkus-java-simple-adopt@1.8.0-232.png)        | ![](plots/quarkus-java-advanced-adopt@1.8.0-232.png)        |
-| ![](plots/quarkus-java-simple-adopt-openj9@1.8.0-232.png) | ![](plots/quarkus-java-advanced-adopt-openj9@1.8.0-232.png) |
-| ![](plots/quarkus-java-simple-graalvm@19.2.1.png)         | ![](plots/quarkus-java-advanced-graalvm@19.2.1.png)         |
-| ![](plots/quarkus-java-simple-openjdk-ri@1.8.40.png)      | ![](plots/quarkus-java-advanced-openjdk-ri@1.8.40.png)      |
 | ![](plots/quarkus-java-simple-zulu@1.8.232.png)           | ![](plots/quarkus-java-advanced-zulu@1.8.232.png)           |
 
 ### **(3.3) Payara Micro via Java Runtime**
 
 | Simple Demo (JAX-RS)                                      | Advanced Demo (JAX-RS, JSON-B, CDI, JPA, PostgresDB)        |
 | --------------------------------------------------------- | ----------------------------------------------------------- |
-| ![](plots/payara-micro-simple-adopt@1.8.0-232.png)        | ![](plots/payara-micro-advanced-adopt@1.8.0-232.png)        |
-| ![](plots/payara-micro-simple-adopt-openj9@1.8.0-232.png) | ![](plots/payara-micro-advanced-adopt-openj9@1.8.0-232.png) |
-| ![](plots/payara-micro-simple-graalvm@19.2.1.png)         | ![](plots/payara-micro-advanced-graalvm@19.2.1.png)         |
-| ![](plots/payara-micro-simple-openjdk-ri@1.8.40.png)      | ![](plots/payara-micro-advanced-openjdk-ri@1.8.40.png)      |
 | ![](plots/payara-micro-simple-zulu@1.8.232.png)           | ![](plots/payara-micro-advanced-zulu@1.8.232.png)           |
 
 ## **(4) Used Runtimes, Frameworks and Libraries**

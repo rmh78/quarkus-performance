@@ -2,7 +2,7 @@ version: "3"
 services:
       testenv:
             build: .
-            image: quarkus:performance
+            image: harald/quarkus-performance
             container_name: testenv
             stdin_open: true
             tty: true
@@ -11,8 +11,8 @@ services:
             ports:
                   - "8080:8080"
             depends_on:
-                  - db
-      db:
+                  - testdb
+      testdb:
             image: postgres
             container_name: testdb
             environment:
