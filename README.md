@@ -7,8 +7,8 @@ The test uses four demo projects.
 
 * **demo-payara** contains a simple JAX-RS application packaged as uber-jar with **Payara Micro (5.194)** application server
 * **demo-payara-jpa** contains an advanced JAX-RS, JSON-B, CDI, JPA, PostgresDB application packaged as uber-jar with **Payara Micro (5.194)** application server
-* **demo-quarkus** contains a simple **Quarkus (1.0.1.Final)** application packaged as jar and additionally compiled as native image using the GraalVM Native Image
-* **demo-quarkus-jpa** contains an advanced JAX-RS, JSON-B, CDI, JPA, PostgresDB **Quarkus (1.0.1.Final)** application packaged as jar and additionally compiled as native image using the GraalVM Native Image
+* **demo-quarkus** contains a simple **Quarkus (1.1.1.Final)** application packaged as jar and additionally compiled as native image using the GraalVM Native Image
+* **demo-quarkus-jpa** contains an advanced JAX-RS, JSON-B, CDI, JPA, PostgresDB **Quarkus (1.1.1.Final)** application packaged as jar and additionally compiled as native image using the GraalVM Native Image
 
 ## **(1) Prepare and start plot-tests**
 
@@ -47,7 +47,7 @@ Docker Engine Configuration:
 
 | Simple Demo (JAX-RS)                 | Advanced Demo (JAX-RS, JSON-B, CDI, JPA, PostgresDB) |
 | ------------------------------------ | ---------------------------------------------------- |
-| ![](plots/quarkus-native-simple_1.0.1.Final.png) | ![](plots/quarkus-native-advanced_1.0.1.Final.png)               |
+| ![](plots/quarkus-native-simple.png) | ![](plots/quarkus-native-advanced.png)               |
 
 ### **(3.2) Quarkus via Java Runtime**
 

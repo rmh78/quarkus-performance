@@ -37,7 +37,7 @@ jabba ls | while read CURRENT_JAVA; do
 done
 
 # run simple quarkus native image test
-/work/scripts/test-single.sh "/work/demo-quarkus/target/demo-quarkus-1.0.0-SNAPSHOT-runner -Xmn8M -Xmx128M" $DEMO_URL quarkus-native-simple "Quarkus (JAX-RS) via GraalVM Native Image (19.3.0 CE)"
+/work/scripts/test-single.sh "/work/demo-quarkus/target/demo-quarkus-1.0.0-SNAPSHOT-runner -Xmn8M -Xmx128M" $DEMO_URL quarkus-native-simple "Quarkus (JAX-RS) via GraalVM Native Image (19.2.1 CE)"
 
 # run advanced quarkus native image test
-/work/scripts/test-single.sh "/work/demo-quarkus-jpa/target/demo-quarkus-jpa-1.0.0-SNAPSHOT-runner -Xmn8M -Xmx128M" $DEMO_URL quarkus-native-advanced "Quarkus (JAX-RS + JPA) via GraalVM Native Image (19.3.0 CE)"
+/work/scripts/test-single.sh "/work/demo-quarkus-jpa/target/demo-quarkus-jpa-1.0.0-SNAPSHOT-runner -Xmn8M -Xmx128M" $DEMO_URL quarkus-native-advanced "Quarkus (JAX-RS + JPA) via GraalVM Native Image (19.2.1 CE)"

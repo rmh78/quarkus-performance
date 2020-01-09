@@ -213,7 +213,10 @@ def monitor(pid, logfile=None, plot=None, duration=None, interval=None,
 
     if plot:
 
+        from matplotlib.ticker import (MultipleLocator, NullFormatter, ScalarFormatter)
         import matplotlib.pyplot as plt
+        import numpy as np
+
         #plt.style.use('dark_background')
 
         fig, ax = plt.subplots(facecolor=(.18, .31, .31))
@@ -223,18 +226,36 @@ def monitor(pid, logfile=None, plot=None, duration=None, interval=None,
 
         if plottitle:
             ax.set_title(plottitle)
-        ax.plot(log['times'], log['cpu'], '-', color='darkgreen', lw=1)
 
-        # PATCH of psrecord - add cpu count
+        # linear plot
+        #ax.plot(log['times'], log['cpu'], '-', color='darkgreen', lw=1)
+        #ax.set_ylim(0., 100)
+
+        # log plot
+        ax.semilogy(log['times'], log['cpu'], '-', color='darkgreen', lw=1)
         ax.set_ylabel(str(psutil.cpu_count()) + ' CPUs (%)', color='darkgreen', fontweight='bold')
+        ax.yaxis.set_major_formatter(ScalarFormatter())
+        ax.yaxis.set_minor_formatter(NullFormatter())
+        ax.set_yticks([1, 2, 3, 4, 5, 10, 20, 30, 40, 50, 100])
+        ax.set_ylim(10, 100)
+
         ax.set_xlabel('time (s)')
-        ax.set_ylim(0., max(log['cpu']) * 1.2)
 
         ax2 = ax.twinx()
 
-        ax2.plot(log['times'], log['mem_real'], '-', color='crimson', lw=2)
+        # linear plot
+        #ax2.plot(log['times'], log['mem_real'], '-', color='crimson', lw=2)
+        #ax2.set_ylabel('RSS Memory (MB)', color='crimson', fontweight='bold')
+        #ax2.set_ylim(0., 500)
+
+        # log plot
+        ax2.semilogy(log['times'], log['mem_real'], '-', color='crimson', lw=2)
         ax2.set_ylabel('RSS Memory (MB)', color='crimson', fontweight='bold')
-        ax2.set_ylim(0., max(log['mem_real']) * 1.2)
+        ax2.yaxis.set_major_formatter(ScalarFormatter())
+        ax2.yaxis.set_minor_formatter(NullFormatter())
+        #ax2.set_yticks(np.linspace(10, 1000, 10))
+        ax2.set_yticks([10, 20, 30, 40, 50, 100, 200, 300, 400, 500, 1000])
+        ax2.set_ylim(10, 1000)
 
         ax.grid()
 
