@@ -25,9 +25,10 @@ The test uses four demo projects.
 The **plot-test** consists of the following actions:
 
 * starting the application (simple JAX-RS application)
+* wait until the first http request to the JAX-RS endpoint can be served (time to first request, arrow in the diagram)
 * start a loop with 3 iterations
   * sleep 1 second
-  * send http request using curl to the JAX-RS endpoint
+  * send http request using curl to the JAX-RS endpoint (arrow in the diagram)
 
 ## **(3) Plots**
 

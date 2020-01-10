@@ -4,6 +4,8 @@
 echo "### utilisation test start"
 echo $@
 
+time_start=$(date +%s%N)
+
 $1 &
 MY_PID=$!
 sleep 0.02
@@ -11,8 +13,11 @@ psrecord $MY_PID --plot "/work/plots/$3.png" --plottitle "$4" --log "/work/logs/
 
 # sleep until ready
 while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' $2)" != "200" ]]; do sleep 0.02; done
-CPU_TIME_TOTAL="$(ps -p $MY_PID -o 'time=' | awk -F'[:.]+' '{t=$3*10+1000*($2+60*$1); print t}')"
-echo "Total CPU time used: $CPU_TIME_TOTAL ms"
+
+time_end=$(date +%s%N)
+time_spent=$((($time_end - $time_start)/1000000))
+echo "### server ready after $time_spent ms"
+echo "$MY_PID:$time_spent" > /work/plots/time.txt
 
 for i in {1..3}
 do
@@ -20,5 +25,6 @@ do
     curl -w "\n" $2
 done
 
+sleep 1
 kill -9 $MY_PID
 echo "### utilisation test finished"

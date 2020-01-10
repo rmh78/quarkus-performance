@@ -227,36 +227,39 @@ def monitor(pid, logfile=None, plot=None, duration=None, interval=None,
         if plottitle:
             ax.set_title(plottitle)
 
-        # linear plot
-        #ax.plot(log['times'], log['cpu'], '-', color='darkgreen', lw=1)
-        #ax.set_ylim(0., 100)
-
         # log plot
         ax.semilogy(log['times'], log['cpu'], '-', color='darkgreen', lw=1)
         ax.set_ylabel(str(psutil.cpu_count()) + ' CPUs (%)', color='darkgreen', fontweight='bold')
         ax.yaxis.set_major_formatter(ScalarFormatter())
         ax.yaxis.set_minor_formatter(NullFormatter())
         ax.set_yticks([1, 2, 3, 4, 5, 10, 20, 30, 40, 50, 100])
-        ax.set_ylim(10, 100)
+        ax.set_ylim(1, 100)
 
         ax.set_xlabel('time (s)')
-
         ax2 = ax.twinx()
-
-        # linear plot
-        #ax2.plot(log['times'], log['mem_real'], '-', color='crimson', lw=2)
-        #ax2.set_ylabel('RSS Memory (MB)', color='crimson', fontweight='bold')
-        #ax2.set_ylim(0., 500)
 
         # log plot
         ax2.semilogy(log['times'], log['mem_real'], '-', color='crimson', lw=2)
         ax2.set_ylabel('RSS Memory (MB)', color='crimson', fontweight='bold')
         ax2.yaxis.set_major_formatter(ScalarFormatter())
         ax2.yaxis.set_minor_formatter(NullFormatter())
-        #ax2.set_yticks(np.linspace(10, 1000, 10))
         ax2.set_yticks([10, 20, 30, 40, 50, 100, 200, 300, 400, 500, 1000])
         ax2.set_ylim(10, 1000)
 
-        ax.grid()
+        # read time for the first request from file
+        with open('/work/plots/time.txt', 'r') as reader:
+            line = reader.readline()
+            data = line.split(":")
+            start_time = int(data[1])/1000
+            if int(data[0]) == pid:
+                ax.axvspan(0, start_time, facecolor='tomato', alpha=0.3, label='time to first request')
+
+        # add annotations for the test REST calls
+        for x in range(4):
+            ax.annotate('', xy=(start_time + x, 1), xytext=(start_time + x, 2),
+                arrowprops=dict(arrowstyle="->", connectionstyle="arc3"), label='test')
+
+        ax.legend(loc='upper right', facecolor='#ffffff')
+        ax2.grid()
 
         fig.savefig(plot)
