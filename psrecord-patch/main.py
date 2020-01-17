@@ -247,19 +247,22 @@ def monitor(pid, logfile=None, plot=None, duration=None, interval=None,
         ax2.set_ylim(10, 1000)
 
         # read time for the first request from file
-        with open('/work/plots/time.txt', 'r') as reader:
+        with open('/work/plots/time-server-ready.txt', 'r') as reader:
             line = reader.readline()
             data = line.split(":")
             start_time = int(data[1])/1000
             if int(data[0]) == pid:
                 ax.axvspan(0, start_time, facecolor='tomato', alpha=0.3, label='time to first request')
 
-        # add annotations for the test REST calls
-        for x in range(4):
-            ax.annotate('', xy=(start_time + x, 1), xytext=(start_time + x, 2),
-                arrowprops=dict(arrowstyle="->", connectionstyle="arc3"), label='test')
+        # read time for the first request from file
+        with open('/work/plots/time-load-test.txt', 'r') as reader:
+            line = reader.readline()
+            data = line.split(":")
+            test_time = int(data[1])/1000
+            if int(data[0]) == pid:
+                ax.axvspan(start_time, start_time + test_time, facecolor='teal', alpha=0.3, label='load test (requests: 5000, concurrency: 5)')
 
-        ax.legend(loc='upper right', facecolor='#ffffff')
+        ax.legend(loc='lower right', facecolor='#ffffff')
         ax2.grid()
 
         fig.savefig(plot)

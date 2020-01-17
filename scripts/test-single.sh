@@ -17,13 +17,15 @@ while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' $2)" != "200" ]]; do sleep 
 time_end=$(date +%s%N)
 time_spent=$((($time_end - $time_start)/1000000))
 echo "### server ready after $time_spent ms"
-echo "$MY_PID:$time_spent" > /work/plots/time.txt
+echo "$MY_PID:$time_spent" > /work/plots/time-server-ready.txt
 
-for i in {1..3}
-do
-    sleep 1
-    curl -w "\n" $2
-done
+# start load-test using apache benchmarking tool
+time_start=$(date +%s%N)
+ab -c 5 -n 5000 $2
+time_end=$(date +%s%N)
+time_spent=$((($time_end - $time_start)/1000000))
+echo "### load-test $time_spent ms"
+echo "$MY_PID:$time_spent" > /work/plots/time-load-test.txt
 
 sleep 1
 kill -9 $MY_PID

@@ -60,4 +60,7 @@ ENV GRAALVM_HOME=/root/.jabba/jdk/graalvm@19.2.1
 
 COPY ./psrecord-patch/main.py /usr/local/lib/python3.6/site-packages/psrecord/
 
+# apache benchmarking tool 
+RUN dnf -y install httpd-tools
+
 WORKDIR /work

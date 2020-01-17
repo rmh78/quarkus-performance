@@ -25,10 +25,11 @@ The test uses four demo projects.
 The **plot-test** consists of the following actions:
 
 * starting the application (simple JAX-RS application)
-* wait until the first http request to the JAX-RS endpoint can be served (time to first request, arrow in the diagram)
-* start a loop with 3 iterations
-  * sleep 1 second
-  * send http request using curl to the JAX-RS endpoint (arrow in the diagram)
+* wait until the first http request to the JAX-RS endpoint can be served (time to first request)
+* start load-test using apache benchmarking tool 
+  * requests: 5000
+  * concurrency: 5
+  * url: the JAX-RS endpoint of the application
 
 ## **(3) Plots**
 
@@ -75,3 +76,4 @@ Docker Engine Configuration:
 * psutil - <https://psutil.readthedocs.io>
 * matplotlib - <https://matplotlib.org>
 * jabba - <https://github.com/shyiko/jabba>
+* Apache Benchmarking Tool - <https://httpd.apache.org/docs/2.4/programs/ab.html>
