@@ -42,21 +42,17 @@ RUN dnf -y install gcc \
 # jabba with jdks
 RUN curl -sL https://github.com/shyiko/jabba/raw/master/install.sh | bash && . ~/.jabba/jabba.sh \
     && jabba install zulu@1.8 \
+    && jabba install zulu@1.11 \
     #&& jabba install openjdk-ri@1.8.40 \
     #&& jabba install adopt@1.8.0-232 \
     #&& jabba install adopt-openj9@1.8.0-232 \
-    && jabba install graalvm@19.2.1 \
-    #&& jabba install graalvm@19.3.0 \
-    #&& jabba install graalvm@19.3.0-java8=tgz+https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-19.3.0/graalvm-ce-java8-linux-amd64-19.3.0.tar.gz \
-    && jabba use graalvm@19.2.1 \
-    #&& jabba use graalvm@19.3.0 \
-    #&& jabba use graalvm@19.3.0-java8 \
+    && jabba install graalvm@19.3.1 \
+    #&& jabba install graalvm@19.3.1-java8=tgz+https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-19.3.1/graalvm-ce-java8-linux-amd64-19.3.1.tar.gz \
+    && jabba use graalvm@19.3.1 \
     && gu install native-image \
     && jabba alias default zulu@1.8
 
-ENV GRAALVM_HOME=/root/.jabba/jdk/graalvm@19.2.1
-#ENV GRAALVM_HOME=/root/.jabba/jdk/graalvm@19.3.0
-#ENV GRAALVM_HOME=/root/.jabba/jdk/graalvm@19.3.0-java8
+ENV GRAALVM_HOME=/root/.jabba/jdk/graalvm@19.3.1
 
 COPY ./psrecord-patch/main.py /usr/local/lib/python3.6/site-packages/psrecord/
 
