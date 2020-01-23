@@ -26,6 +26,7 @@ The **plot-test** consists of the following actions:
 
 * starting the application (simple JAX-RS application)
 * wait until the first http request to the JAX-RS endpoint can be served (time to first request)
+* sleep 1 second
 * start load-test using apache benchmarking tool 
   * requests: 5000
   * concurrency: 5
