@@ -252,15 +252,49 @@ def monitor(pid, logfile=None, plot=None, duration=None, interval=None,
             data = line.split(":")
             start_time = int(data[1])/1000
             if int(data[0]) == pid:
+                # print start area
                 ax.axvspan(0, start_time, facecolor='tomato', alpha=0.3, label='time to first request')
+                
+                # find rss at start time
+                for i in range(len(log['times'])):
+                    if log['times'][i] > start_time :
+                        rss_at_start_time = int(log['mem_real'][i])
+                        break
+                
+                # print start time annotation
+                ax2.annotate(str(start_time) + ' s\n' + str(rss_at_start_time) + ' MB', 
+                    xy=(start_time, rss_at_start_time), 
+                    xytext=(0.2, 0.5), 
+                    textcoords='axes fraction',
+                    bbox = dict(boxstyle="round", fc="0.8"),
+                    arrowprops=dict(arrowstyle="->", connectionstyle="arc3"))
 
         # read time for the first request from file
         with open('/work/plots/time-load-test.txt', 'r') as reader:
             line = reader.readline()
             data = line.split(":")
-            test_time = int(data[1])/1000
+            test_duration = int(data[1])/1000
+            test_start = start_time + 1
+            test_end = test_start + test_duration
             if int(data[0]) == pid:
-                ax.axvspan(start_time, start_time + test_time, facecolor='teal', alpha=0.3, label='load test (requests: 5000, concurrency: 5)')
+                # print test area
+                ax.axvspan(test_start, test_end, facecolor='teal', alpha=0.3, label='load test (requests: 5000, concurrency: 5)')
+
+                # find rss at test end
+                for i in range(len(log['times'])):
+                    if log['times'][i] > test_end :
+                        rss_at_test_end = int(log['mem_real'][i])
+                        break
+                
+                # print test end annotation
+                ax2.annotate(str(test_duration) + ' s\n' + str(rss_at_test_end) + ' MB', 
+                    xy=(test_end, rss_at_test_end), 
+                    xytext=(0.8, 0.5), 
+                    textcoords='axes fraction',
+                    bbox = dict(boxstyle="round", fc="0.8"),
+                    arrowprops=dict(arrowstyle="->", connectionstyle="arc3"))
+
+
 
         ax.legend(loc='lower right', facecolor='#ffffff')
         ax2.grid()

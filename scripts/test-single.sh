@@ -8,6 +8,7 @@ time_start=$(date +%s%N)
 
 $1 &
 MY_PID=$!
+
 sleep 0.02
 psrecord $MY_PID --plot "/work/plots/$3.png" --plottitle "$4" --log "/work/logs/$3.log" --interval 0.2 & PSRECORD_PID=$!
 
@@ -18,6 +19,8 @@ time_end=$(date +%s%N)
 time_spent=$((($time_end - $time_start)/1000000))
 echo "### server ready after $time_spent ms"
 echo "$MY_PID:$time_spent" > /work/plots/time-server-ready.txt
+
+sleep 1 
 
 # start load-test using apache benchmarking tool
 time_start=$(date +%s%N)
