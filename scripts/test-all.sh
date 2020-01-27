@@ -21,6 +21,14 @@ sleep 2
 /work/scripts/test-single.sh "/work/demo-quarkus-jpa/target/demo-quarkus-jpa-1.0.0-SNAPSHOT-runner -Xmn8M -Xmx8M" $DEMO_URL quarkus-native-advanced "Quarkus (JAX-RS + JPA) via GraalVM Native Image (19.3.1 CE)"
 sleep 2
 
+# run simple python test
+/work/scripts/test-single.sh "python3 /work/demo-python/simple.py" $DEMO_URL python-simple "Python3 with Flask"
+sleep 2
+
+# run advanced python test
+/work/scripts/test-single.sh "python3 /work/demo-python/advanced.py" $DEMO_URL python-advanced "Python3 with Flask and Psycopg2"
+sleep 2
+
 # iterate over all installed java version
 jabba ls | while read CURRENT_JAVA; do
 

@@ -1,11 +1,11 @@
 FROM centos:8
 
 # PROXY: uncomment if behind a proxy (px proxy server on localhost:3128)
-#ENV http_proxy=http://host.docker.internal:3128
-#ENV https_proxy=${http_proxy}
-#ENV HTTP_PROXY=${http_proxy}
-#ENV HTTPS_PROXY=${http_proxy}
-#ENV NO_PROXY=localhost,127.0.0.1
+ENV http_proxy=http://host.docker.internal:3128
+ENV https_proxy=${http_proxy}
+ENV HTTP_PROXY=${http_proxy}
+ENV HTTPS_PROXY=${http_proxy}
+ENV NO_PROXY=localhost,127.0.0.1
 
 ENV MAVEN_VERSION=3.6.3 
 ENV MAVEN_BASE_URL="https://apache.osuosl.org/maven/maven-3/${MAVEN_VERSION}/binaries" 
@@ -23,8 +23,8 @@ RUN mkdir -p ${MAVEN_HOME} ${MAVEN_HOME}/ref \
     && tar -xf /tmp/${MAVEN_TARBALL} -C ${MAVEN_HOME} --strip 1 \
     && ln -s ${MAVEN_HOME}/bin/mvn /usr/bin/mvn \
     # PROXY: use the correct maven settings if behind a proxy or not
-    #&& cp /tmp/settings_pxproxy.xml ${MAVEN_HOME}/conf/settings.xml 
-    && cp /tmp/settings_noproxy.xml ${MAVEN_HOME}/conf/settings.xml 
+    && cp /tmp/settings_pxproxy.xml ${MAVEN_HOME}/conf/settings.xml 
+    #&& cp /tmp/settings_noproxy.xml ${MAVEN_HOME}/conf/settings.xml 
 
 # tools
 RUN dnf -y install gcc \
@@ -37,7 +37,9 @@ RUN dnf -y install gcc \
     && dnf -y install python3-devel \
     # psrecord
     && pip3 install psrecord \
-    && pip3 install matplotlib
+    && pip3 install matplotlib \
+    && pip3 install flask \
+    && pip3 install psycopg2-binary
 
 # jabba with jdks
 RUN curl -sL https://github.com/shyiko/jabba/raw/master/install.sh | bash && . ~/.jabba/jabba.sh \
