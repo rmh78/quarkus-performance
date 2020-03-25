@@ -5,17 +5,10 @@ The performance test runs inside a docker container.
 
 The test uses four demo projects.
 
-<<<<<<< HEAD
 * **demo-payara** contains a simple JAX-RS application packaged as uber-jar with **Payara Micro (5.201)** application server
 * **demo-payara-jpa** contains an advanced JAX-RS, JSON-B, CDI, JPA, PostgresDB application packaged as uber-jar with **Payara Micro (5.201)** application server
 * **demo-quarkus** contains a simple **Quarkus (1.3.0)** application packaged as jar and additionally compiled as native image using the GraalVM Native Image
 * **demo-quarkus-jpa** contains an advanced JAX-RS, JSON-B, CDI, JPA, PostgresDB **Quarkus (1.3.0)** application packaged as jar and additionally compiled as native image using the GraalVM Native Image
-=======
-* **demo-payara** contains a simple JAX-RS application packaged as uber-jar with **Payara Micro (5.194)** application server
-* **demo-payara-jpa** contains an advanced JAX-RS, JSON-B, CDI, JPA, PostgresDB application packaged as uber-jar with **Payara Micro (5.194)** application server
-* **demo-quarkus** contains a simple **Quarkus (1.3.0.Alpha2)** application packaged as jar and additionally compiled as native image using the GraalVM Native Image
-* **demo-quarkus-jpa** contains an advanced JAX-RS, JSON-B, CDI, JPA, PostgresDB **Quarkus (1.3.0.Alpha2)** application packaged as jar and additionally compiled as native image using the GraalVM Native Image
->>>>>>> a7ab9e1fd879067d9cc7db7a13e5cc00a31179ea
 
 ## **(1) Prepare and start plot-tests**
 
