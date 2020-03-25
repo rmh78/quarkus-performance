@@ -11,7 +11,7 @@
 
     <properties>
         <version.javaee>8.0</version.javaee>
-        <version.payara.micro>5.194</version.payara.micro>
+        <version.payara.micro>5.201</version.payara.micro>
 
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>

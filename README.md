@@ -5,10 +5,10 @@ The performance test runs inside a docker container.
 
 The test uses four demo projects.
 
-* **demo-payara** contains a simple JAX-RS application packaged as uber-jar with **Payara Micro (5.194)** application server
-* **demo-payara-jpa** contains an advanced JAX-RS, JSON-B, CDI, JPA, PostgresDB application packaged as uber-jar with **Payara Micro (5.194)** application server
-* **demo-quarkus** contains a simple **Quarkus (1.2.0.CR1)** application packaged as jar and additionally compiled as native image using the GraalVM Native Image
-* **demo-quarkus-jpa** contains an advanced JAX-RS, JSON-B, CDI, JPA, PostgresDB **Quarkus (1.2.0.CR1)** application packaged as jar and additionally compiled as native image using the GraalVM Native Image
+* **demo-payara** contains a simple JAX-RS application packaged as uber-jar with **Payara Micro (5.201)** application server
+* **demo-payara-jpa** contains an advanced JAX-RS, JSON-B, CDI, JPA, PostgresDB application packaged as uber-jar with **Payara Micro (5.201)** application server
+* **demo-quarkus** contains a simple **Quarkus (1.3.0)** application packaged as jar and additionally compiled as native image using the GraalVM Native Image
+* **demo-quarkus-jpa** contains an advanced JAX-RS, JSON-B, CDI, JPA, PostgresDB **Quarkus (1.3.0)** application packaged as jar and additionally compiled as native image using the GraalVM Native Image
 
 ## **(1) Prepare and start plot-tests**
 
@@ -56,13 +56,13 @@ Docker Engine Configuration:
 
 |                   Simple Demo (JAX-RS)                    | Advanced Demo (JAX-RS, JSON-B, CDI, JPA, PostgresDB)        |
 | --------------------------------------------------------- | ----------------------------------------------------------- |
-| ![](plots/quarkus-java-simple-zulu@1.8.242.png)           | ![](plots/quarkus-java-advanced-zulu@1.8.242.png)           |
+| ![](plots/quarkus-java-simple-zulu@1.11.0.png)           | ![](plots/quarkus-java-advanced-zulu@1.11.0.png)           |
 
 ### **(3.3) Payara Micro via Java Runtime**
 
 | Simple Demo (JAX-RS)                                      | Advanced Demo (JAX-RS, JSON-B, CDI, JPA, PostgresDB)        |
 | --------------------------------------------------------- | ----------------------------------------------------------- |
-| ![](plots/payara-micro-simple-zulu@1.8.242.png)           | ![](plots/payara-micro-advanced-zulu@1.8.242.png)           |
+| ![](plots/payara-micro-simple-zulu@1.11.0.png)           | ![](plots/payara-micro-advanced-zulu@1.11.0.png)           |
 
 ## **(4) Used Runtimes, Frameworks and Libraries**
 
