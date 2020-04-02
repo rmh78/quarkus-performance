@@ -10,8 +10,8 @@ The test uses four demo projects.
 * **demo-quarkus** contains a simple **Quarkus (1.3.1.Final)** application packaged as jar and additionally compiled as native image using the GraalVM Native Image
 * **demo-quarkus-jpa** contains an advanced JAX-RS, JSON-B, CDI, JPA, PostgresDB **Quarkus (1.3.1.Final)** application packaged as jar and additionally compiled as native image using the GraalVM Native Image
 * **demo-python** contains a simple (REST service) and advanced (REST with DB access) Python application
-* **demo-spring-boot** contains a simple REST service using Spring Boot (2.2.6.RELEASE)
-* **demo-spring-boot-jpa** contains an advanced REST, JSON, JPA, PostgresDB service using Spring Boot (2.2.6.RELEASE)
+* **demo-spring-boot** contains a simple REST service using **Spring Boot (2.2.6.RELEASE)**
+* **demo-spring-boot-jpa** contains an advanced REST, JSON, JPA, PostgresDB service using **Spring Boot (2.2.6.RELEASE)**
 
 ## **(1) Prepare and start plot-tests**
 
