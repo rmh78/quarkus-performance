@@ -73,7 +73,7 @@ Docker Engine Configuration:
 | --------------------------------------------- | ----------------------------------------------- |
 | ![](plots/spring-boot-simple-zulu@1.11.0.png) | ![](plots/spring-boot-advanced-zulu@1.11.0.png) |
 
-### **(3.4) Python**
+### **(3.5) Python**
 
 | Simple                       | Advanced                       |
 | ---------------------------- | ------------------------------ |
