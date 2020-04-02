@@ -1,4 +1,4 @@
-# Comparing the CPU/Memory utilisation of a JAX-RS application (Quarkus, Payara Micro)
+# Comparing the CPU/Memory utilisation of a REST service (Quarkus, Payara Micro, Spring Boot, Python)
 
 Some scripts to measure the CPU and Memory utilisation of JAX-RS appliations.
 The performance test runs inside a docker container.
@@ -9,6 +9,9 @@ The test uses four demo projects.
 * **demo-payara-jpa** contains an advanced JAX-RS, JSON-B, CDI, JPA, PostgresDB application packaged as uber-jar with **Payara Micro (5.201)** application server
 * **demo-quarkus** contains a simple **Quarkus (1.3.1.Final)** application packaged as jar and additionally compiled as native image using the GraalVM Native Image
 * **demo-quarkus-jpa** contains an advanced JAX-RS, JSON-B, CDI, JPA, PostgresDB **Quarkus (1.3.1.Final)** application packaged as jar and additionally compiled as native image using the GraalVM Native Image
+* **demo-python** contains a simple (REST service) and advanced (REST with DB access) Python application
+* **demo-spring-boot** contains a simple REST service using Spring Boot (2.2.6.RELEASE)
+* **demo-spring-boot-jpa** contains an advanced REST, JSON, JPA, PostgresDB service using Spring Boot (2.2.6.RELEASE)
 
 ## **(1) Prepare and start plot-tests**
 
@@ -48,21 +51,33 @@ Docker Engine Configuration:
 
 ### **(3.1) Quarkus via GraalVM Native Image**
 
-| Simple Demo (JAX-RS)                 | Advanced Demo (JAX-RS, JSON-B, CDI, JPA, PostgresDB) |
-| ------------------------------------ | ---------------------------------------------------- |
-| ![](plots/quarkus-native-simple.png) | ![](plots/quarkus-native-advanced.png)               |
+| Simple                               | Advanced                               |
+| ------------------------------------ | -------------------------------------- |
+| ![](plots/quarkus-native-simple.png) | ![](plots/quarkus-native-advanced.png) |
 
 ### **(3.2) Quarkus via Java Runtime**
 
-|                   Simple Demo (JAX-RS)                    | Advanced Demo (JAX-RS, JSON-B, CDI, JPA, PostgresDB)        |
-| --------------------------------------------------------- | ----------------------------------------------------------- |
-| ![](plots/quarkus-java-simple-zulu@1.11.0.png)           | ![](plots/quarkus-java-advanced-zulu@1.11.0.png)           |
+| Simple                                         | Advanced                                         |
+| ---------------------------------------------- | ------------------------------------------------ |
+| ![](plots/quarkus-java-simple-zulu@1.11.0.png) | ![](plots/quarkus-java-advanced-zulu@1.11.0.png) |
 
 ### **(3.3) Payara Micro via Java Runtime**
 
-| Simple Demo (JAX-RS)                                      | Advanced Demo (JAX-RS, JSON-B, CDI, JPA, PostgresDB)        |
-| --------------------------------------------------------- | ----------------------------------------------------------- |
-| ![](plots/payara-micro-simple-zulu@1.11.0.png)           | ![](plots/payara-micro-advanced-zulu@1.11.0.png)           |
+| Simple                                         | Advanced                                         |
+| ---------------------------------------------- | ------------------------------------------------ |
+| ![](plots/payara-micro-simple-zulu@1.11.0.png) | ![](plots/payara-micro-advanced-zulu@1.11.0.png) |
+
+### **(3.4) Spring Boot via Java Runtime**
+
+| Simple                                        | Advanced                                        |
+| --------------------------------------------- | ----------------------------------------------- |
+| ![](plots/spring-boot-simple-zulu@1.11.0.png) | ![](plots/spring-boot-advanced-zulu@1.11.0.png) |
+
+### **(3.4) Python**
+
+| Simple                       | Advanced                       |
+| ---------------------------- | ------------------------------ |
+| ![](plots/python-simple.png) | ![](plots/python-advanced.png) |
 
 ## **(4) Used Runtimes, Frameworks and Libraries**
 
@@ -73,6 +88,7 @@ Docker Engine Configuration:
 * Adopt OpenJDK - <https://adoptopenjdk.net/>
 * Zulu OpenJDK - <https://www.azul.com/products/zulu-community>
 * Payara Micro - <https://www.payara.fish>
+* Spring Boot - <https://spring.io/projects/spring-boot>
 * psrecord - <https://github.com/astrofrog/psrecord>
 * psutil - <https://psutil.readthedocs.io>
 * matplotlib - <https://matplotlib.org>

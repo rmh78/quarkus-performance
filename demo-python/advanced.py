@@ -10,11 +10,11 @@ log = logging.getLogger('werkzeug')
 log.setLevel(logging.ERROR)
 
 # open connection pool to postgres-db
-postgreSQL_pool = psycopg2.pool.SimpleConnectionPool(1, 20,user="test",
-                                                    password="test",
+postgreSQL_pool = psycopg2.pool.SimpleConnectionPool(1, 20,user="postgres",
+                                                    password="postgres",
                                                     host="testdb",
                                                     port="5432",
-                                                    database="testdb")
+                                                    database="postgres")
 
 def executeQuery(query):
     try:
@@ -52,11 +52,11 @@ def getAll():
             cursor.close()
             postgreSQL_pool.putconn(connection)
 
-executeQuery('''DROP TABLE CUSTOMER;''')
-executeQuery('''CREATE TABLE CUSTOMER (ID INT PRIMARY KEY NOT NULL, NAME TEXT NOT NULL, AGE INT NOT NULL);''')
-executeQuery('''insert into customer (id, name, age) values (1, 'Harald', 41);''')
-executeQuery('''insert into customer (id, name, age) values (2, 'Paul', 23);''')
-executeQuery('''insert into customer (id, name, age) values (3, 'Stefan', 31);''')
+#executeQuery('''DROP TABLE CUSTOMER;''')
+#executeQuery('''CREATE TABLE CUSTOMER (ID INT PRIMARY KEY NOT NULL, NAME TEXT NOT NULL, AGE INT NOT NULL);''')
+#executeQuery('''insert into customer (id, name, age) values (1, 'Harald', 41);''')
+#executeQuery('''insert into customer (id, name, age) values (2, 'Paul', 23);''')
+#executeQuery('''insert into customer (id, name, age) values (3, 'Stefan', 31);''')
 
 @app.route('/hello')
 def find_all_customer():

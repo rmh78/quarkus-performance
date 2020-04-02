@@ -43,6 +43,14 @@ jabba ls | while read CURRENT_JAVA; do
     /work/scripts/test-single.sh "java -Xmn16M -Xmx512M -jar /work/demo-payara-jpa/target/demo-payara-microbundle.jar --noCluster" $DEMO_URL payara-micro-advanced-$CURRENT_JAVA "Payara Micro (JAX-RS + JPA) via Java Runtime ($CURRENT_JAVA)"
     sleep 2
 
+    # run simple spring-boot test
+    /work/scripts/test-single.sh "java -Xmn8M -Xmx32M -jar /work/demo-spring-boot/target/demo-spring-boot.jar" $DEMO_URL spring-boot-simple-$CURRENT_JAVA "Spring Boot (REST) via Java Runtime ($CURRENT_JAVA)"
+    sleep 2
+
+    # run advanced spring-boot test
+    /work/scripts/test-single.sh "java -Xmn16M -Xmx32M -jar /work/demo-spring-boot-jpa/target/demo-spring-boot-jpa.jar" $DEMO_URL spring-boot-advanced-$CURRENT_JAVA "Spring Boot (REST + JPA) via Java Runtime ($CURRENT_JAVA)"
+    sleep 2
+
     # run simple quarkus-java test
     /work/scripts/test-single.sh "java -Xmn8M -Xmx32M -jar /work/demo-quarkus/target/*-runner.jar" $DEMO_URL quarkus-java-simple-$CURRENT_JAVA "Quarkus (JAX-RS) via Java Runtime ($CURRENT_JAVA)"
     sleep 2

@@ -13,11 +13,13 @@ services:
             depends_on:
                   - testdb
       testdb:
-            image: postgres
+            build: 
+                  context: .
+                  dockerfile: ./Dockerfile.db
             container_name: testdb
             environment:
-                  - POSTGRES_USER=test
-                  - POSTGRES_PASSWORD=test
-                  - POSTGRES_DB=testdb
+                  - POSTGRES_USER=postgres
+                  - POSTGRES_PASSWORD=postgres
+                  - POSTGRES_DB=postgres
             ports:
                   - "5432:5432"
