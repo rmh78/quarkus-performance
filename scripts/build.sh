@@ -18,10 +18,12 @@ mvn clean package
 
 # demo quarkus simple
 cd /work/demo-quarkus
-mvn clean package
+mvn package
 mvn package -Pnative
+mv /work/demo-quarkus/target/demo-quarkus-1.0.0-SNAPSHOT-runner /work/demo-quarkus/target/demo-ce
 
 # demo quarkus advanced
 cd /work/demo-quarkus-jpa
-mvn clean package
+mvn package
 mvn package -Pnative
+mv /work/demo-quarkus-jpa/target/demo-quarkus-jpa-1.0.0-SNAPSHOT-runner /work/demo-quarkus-jpa/target/demo-ce

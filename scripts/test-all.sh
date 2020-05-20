@@ -14,11 +14,11 @@ jabba() {
 DEMO_URL=http://localhost:8080/hello
 
 # run simple quarkus native image test
-/work/scripts/test-single.sh "/work/demo-quarkus/target/demo-quarkus-1.0.0-SNAPSHOT-runner -Xmn8M -Xmx8M" $DEMO_URL quarkus-native-simple "Quarkus (JAX-RS) via GraalVM Native Image (20.0.0 CE)"
+/work/scripts/test-single.sh "/work/demo-quarkus/target/demo-ce -Xmn8M -Xmx8M" $DEMO_URL quarkus-native-simple-ce "Quarkus (JAX-RS) via GraalVM Native Image (19.3.2 CE)"
 sleep 2
 
 # run advanced quarkus native image test
-/work/scripts/test-single.sh "/work/demo-quarkus-jpa/target/demo-quarkus-jpa-1.0.0-SNAPSHOT-runner -Xmn8M -Xmx8M" $DEMO_URL quarkus-native-advanced "Quarkus (JAX-RS + JPA) via GraalVM Native Image (20.0.0 CE)"
+/work/scripts/test-single.sh "/work/demo-quarkus-jpa/target/demo-ce -Xmn8M -Xmx8M" $DEMO_URL quarkus-native-advanced-ce "Quarkus (JAX-RS + JPA) via GraalVM Native Image (19.3.2 CE)"
 sleep 2
 
 # run simple python test
