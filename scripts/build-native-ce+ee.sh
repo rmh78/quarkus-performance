@@ -15,18 +15,18 @@ jabba() {
 
 # build demo quarkus simple
 cd /work/demo-quarkus
-jabba use graalvm-ce@19.3.2-java11
+jabba use graalvm-ce@20.2.0
 mvn package -Pnative
 mv /work/demo-quarkus/target/demo-quarkus-1.0.0-SNAPSHOT-runner /work/demo-quarkus/target/demo-ce
-jabba use graalvm-ee@19.3.2-java11
+jabba use graalvm-ee@20.2.0
 mvn package -Pnative
 mv /work/demo-quarkus/target/demo-quarkus-1.0.0-SNAPSHOT-runner /work/demo-quarkus/target/demo-ee
 
 # build demo quarkus advanced
 cd /work/demo-quarkus-jpa
-jabba use graalvm-ce@19.3.2-java11
+jabba use graalvm-ce@20.2.0
 mvn package -Pnative
 mv /work/demo-quarkus-jpa/target/demo-quarkus-jpa-1.0.0-SNAPSHOT-runner /work/demo-quarkus-jpa/target/demo-ce
-jabba use graalvm-ee@19.3.2-java11
+jabba use graalvm-ee@20.2.0
 mvn package -Pnative
 mv /work/demo-quarkus-jpa/target/demo-quarkus-jpa-1.0.0-SNAPSHOT-runner /work/demo-quarkus-jpa/target/demo-ee

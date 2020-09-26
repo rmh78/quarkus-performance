@@ -1,11 +1,11 @@
 FROM centos:8
 
 # PROXY: uncomment if behind a proxy (px proxy server on localhost:3128)
-ENV http_proxy=http://host.docker.internal:3128
-ENV https_proxy=${http_proxy}
-ENV HTTP_PROXY=${http_proxy}
-ENV HTTPS_PROXY=${http_proxy}
-ENV NO_PROXY=localhost,127.0.0.1
+#ENV http_proxy=http://host.docker.internal:3128
+#ENV https_proxy=${http_proxy}
+#ENV HTTP_PROXY=${http_proxy}
+#ENV HTTPS_PROXY=${http_proxy}
+#ENV NO_PROXY=localhost,127.0.0.1
 
 ENV MAVEN_VERSION=3.6.3 
 ENV MAVEN_BASE_URL="https://apache.osuosl.org/maven/maven-3/${MAVEN_VERSION}/binaries" 
@@ -23,8 +23,8 @@ RUN mkdir -p ${MAVEN_HOME} ${MAVEN_HOME}/ref \
     && tar -xf /tmp/${MAVEN_TARBALL} -C ${MAVEN_HOME} --strip 1 \
     && ln -s ${MAVEN_HOME}/bin/mvn /usr/bin/mvn \
     # PROXY: use the correct maven settings if behind a proxy or not
-    && cp /tmp/settings_pxproxy.xml ${MAVEN_HOME}/conf/settings.xml 
-    #&& cp /tmp/settings_noproxy.xml ${MAVEN_HOME}/conf/settings.xml 
+    #&& cp /tmp/settings_pxproxy.xml ${MAVEN_HOME}/conf/settings.xml 
+    && cp /tmp/settings_noproxy.xml ${MAVEN_HOME}/conf/settings.xml 
 
 # tools
 RUN dnf -y install gcc \
@@ -44,10 +44,10 @@ RUN dnf -y install gcc \
 # jabba with jdks
 RUN curl -sL https://github.com/shyiko/jabba/raw/master/install.sh | bash && . ~/.jabba/jabba.sh \
     && jabba install zulu@1.11 \
-    && jabba install graalvm-ce@19.3.2-java11=tgz+https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-19.3.2/graalvm-ce-java11-linux-amd64-19.3.2.tar.gz \
-    && jabba use graalvm-ce@19.3.2-java11 \
+    && jabba install graalvm-ce@20.2.0=tgz+https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-20.2.0/graalvm-ce-java11-linux-amd64-20.2.0.tar.gz \
+    && jabba use graalvm-ce@20.2.0 \
     && gu install native-image \
-    && jabba alias default zulu@1.11
+    && jabba alias default graalvm-ce@20.2.0
 
 COPY ./psrecord-patch/main.py /usr/local/lib/python3.6/site-packages/psrecord/
 

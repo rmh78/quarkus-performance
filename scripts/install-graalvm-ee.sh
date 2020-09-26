@@ -17,7 +17,7 @@ jabba() {
 
 if [ "$(ls -A /work/graalvm-ee)" ]; then
     echo "install GraalVM EE"
-    jabba install graalvm-ee@19.3.2-java11=tgz+file:///work/graalvm-ee/graalvm-ee-java11-linux-amd64-19.3.2.tar.gz
-    jabba use graalvm-ee@19.3.2-java11
-    gu -L install /work/graalvm-ee/native-image-installable-svm-svmee-java11-linux-amd64-19.3.2.jar
+    jabba install graalvm-ee@20.2.0=tgz+file:///work/graalvm-ee/graalvm-ee-java11-linux-amd64-20.2.0.tar.gz
+    jabba use graalvm-ee@20.2.0
+    gu -L install /work/graalvm-ee/native-image-installable-svm-svmee-java11-linux-amd64-20.2.0.jar
 fi

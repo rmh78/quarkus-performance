@@ -11,11 +11,11 @@
 
     <properties>
         <version.javaee>8.0</version.javaee>
-        <version.payara.micro>5.201</version.payara.micro>
+        <version.payara.micro>5.2020.4</version.payara.micro>
         <postgresql.version>42.2.6</postgresql.version>
 
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
         <failOnMissingWebXml>false</failOnMissingWebXml>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -43,7 +43,7 @@
             <plugin>
                 <groupId>fish.payara.maven.plugins</groupId>
                 <artifactId>payara-micro-maven-plugin</artifactId>
-                <version>1.0.7</version>
+                <version>1.2.0</version>
                 <configuration>
                     <payaraVersion>${version.payara.micro}</payaraVersion>
                     <deployWar>true</deployWar>

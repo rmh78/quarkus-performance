@@ -5,13 +5,13 @@ The performance test runs inside a docker container.
 
 The test uses four demo projects.
 
-* **demo-payara** contains a simple JAX-RS application packaged as uber-jar with **Payara Micro (5.201)** application server
-* **demo-payara-jpa** contains an advanced JAX-RS, JSON-B, CDI, JPA, PostgresDB application packaged as uber-jar with **Payara Micro (5.201)** application server
-* **demo-quarkus** contains a simple **Quarkus (1.4.2.Final)** application packaged as jar and additionally compiled as native image using the GraalVM Native Image
-* **demo-quarkus-jpa** contains an advanced JAX-RS, JSON-B, CDI, JPA, PostgresDB **Quarkus (1.4.2.Final)** application packaged as jar and additionally compiled as native image using the GraalVM Native Image
+* **demo-payara** contains a simple JAX-RS application packaged as uber-jar with **Payara Micro (5.2020.4)** application server
+* **demo-payara-jpa** contains an advanced JAX-RS, JSON-B, CDI, JPA, PostgresDB application packaged as uber-jar with **Payara Micro (5.2020.4)** application server
+* **demo-quarkus** contains a simple **Quarkus (1.8.1.Final)** application packaged as jar and additionally compiled as native image using the GraalVM Native Image
+* **demo-quarkus-jpa** contains an advanced JAX-RS, JSON-B, CDI, JPA, PostgresDB **Quarkus (1.8.1.Final)** application packaged as jar and additionally compiled as native image using the GraalVM Native Image
 * **demo-python** contains a simple (REST service) and advanced (REST with DB access) Python application
-* **demo-spring-boot** contains a simple REST service using **Spring Boot (2.2.6.RELEASE)**
-* **demo-spring-boot-jpa** contains an advanced REST, JSON, JPA, PostgresDB service using **Spring Boot (2.2.6.RELEASE)**
+* **demo-spring-boot** contains a simple REST service using **Spring Boot (2.3.4.RELEASE)**
+* **demo-spring-boot-jpa** contains an advanced REST, JSON, JPA, PostgresDB service using **Spring Boot (2.3.4.RELEASE)**
 
 ## **(1) Prepare and start plot-tests**
 
@@ -30,7 +30,7 @@ The **plot-test** consists of the following actions:
 * starting the application (simple JAX-RS application)
 * wait until the first http request to the JAX-RS endpoint can be served (time to first request)
 * sleep 1 second
-* start load-test using apache benchmarking tool 
+* start load-test using apache benchmarking tool
   * requests: 5000
   * concurrency: 5
   * url: the JAX-RS endpoint of the application
