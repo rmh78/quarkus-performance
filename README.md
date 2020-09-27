@@ -3,15 +3,15 @@
 Some scripts to measure the CPU and Memory utilisation of JAX-RS appliations.
 The performance test runs inside a docker container.
 
-The test uses four demo projects.
+The test uses the following demo projects:
 
 * **demo-payara** contains a simple JAX-RS application packaged as uber-jar with **Payara Micro (5.2020.4)** application server
 * **demo-payara-jpa** contains an advanced JAX-RS, JSON-B, CDI, JPA, PostgresDB application packaged as uber-jar with **Payara Micro (5.2020.4)** application server
 * **demo-quarkus** contains a simple **Quarkus (1.8.1.Final)** application packaged as jar and additionally compiled as native image using the GraalVM Native Image
 * **demo-quarkus-jpa** contains an advanced JAX-RS, JSON-B, CDI, JPA, PostgresDB **Quarkus (1.8.1.Final)** application packaged as jar and additionally compiled as native image using the GraalVM Native Image
 * **demo-python** contains a simple (REST service) and advanced (REST with DB access) Python application
-* **demo-spring-boot** contains a simple REST service using **Spring Boot (2.3.4.RELEASE)**
-* **demo-spring-boot-jpa** contains an advanced REST, JSON, JPA, PostgresDB service using **Spring Boot (2.3.4.RELEASE)**
+* **demo-spring-boot** contains a simple REST service using **Spring Boot (2.4.0-M3)**
+* **demo-spring-boot-jpa** contains an advanced REST, JSON, JPA, PostgresDB service using **Spring Boot (2.4.0-M3)**
 
 ## **(1) Prepare and start plot-tests**
 
@@ -68,13 +68,19 @@ Docker Engine Configuration:
 | ---------------------------------------------- | ------------------------------------------------ |
 | ![](plots/payara-micro-simple-zulu@1.11.0.png) | ![](plots/payara-micro-advanced-zulu@1.11.0.png) |
 
-### **(3.4) Spring Boot via Java Runtime**
+### **(3.4) Spring Boot via GraalVM Native Image**
+
+| Simple                                        | Advanced                                        |
+| --------------------------------------------- | ----------------------------------------------- |
+| ![](plots/spring-boot-native-simple-ce.png) | ![](plots/spring-boot-native-advanced-ce.png) |
+
+### **(3.5) Spring Boot via Java Runtime**
 
 | Simple                                        | Advanced                                        |
 | --------------------------------------------- | ----------------------------------------------- |
 | ![](plots/spring-boot-simple-zulu@1.11.0.png) | ![](plots/spring-boot-advanced-zulu@1.11.0.png) |
 
-### **(3.5) Python**
+### **(3.6) Python**
 
 | Simple                       | Advanced                       |
 | ---------------------------- | ------------------------------ |

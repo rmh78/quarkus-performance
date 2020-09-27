@@ -21,6 +21,14 @@ sleep 2
 /work/scripts/test-single.sh "/work/demo-quarkus-jpa/target/demo-ce -Xmn8M -Xmx8M" $DEMO_URL quarkus-native-advanced-ce "Quarkus (JAX-RS + JPA) via GraalVM Native Image (20.2.0 CE)"
 sleep 2
 
+# run simple spring-boot native image test
+/work/scripts/test-single.sh "/work/demo-spring-boot/target/demo-ce -Xmn16M -Xmx16M" $DEMO_URL spring-boot-native-simple-ce "Spring Boot (REST) via GraalVM Native Image (20.2.0 CE)"
+sleep 2
+
+# run advanced spring-boot native image test
+/work/scripts/test-single.sh "/work/demo-spring-boot-jpa/target/demo-ce -Xmn16M -Xmx16M" $DEMO_URL spring-boot-native-advanced-ce "Spring Boot (REST + JPA) via GraalVM Native Image (20.2.0 CE)"
+sleep 2
+
 # run simple python test
 /work/scripts/test-single.sh "python3 /work/demo-python/simple.py" $DEMO_URL python-simple "Python3 with Flask"
 sleep 2
@@ -48,7 +56,7 @@ jabba ls | while read CURRENT_JAVA; do
     sleep 2
 
     # run advanced spring-boot test
-    /work/scripts/test-single.sh "java -Xmn16M -Xmx32M -jar /work/demo-spring-boot-jpa/target/demo-spring-boot-jpa.jar" $DEMO_URL spring-boot-advanced-$CURRENT_JAVA "Spring Boot (REST + JPA) via Java Runtime ($CURRENT_JAVA)"
+    /work/scripts/test-single.sh "java -Xmn16M -Xmx32M -jar /work/demo-spring-boot-jpa/target/demo-spring-boot.jar" $DEMO_URL spring-boot-advanced-$CURRENT_JAVA "Spring Boot (REST + JPA) via Java Runtime ($CURRENT_JAVA)"
     sleep 2
 
     # run simple quarkus-java test

@@ -10,11 +10,15 @@ mvn clean package payara-micro:bundle
 
 # demo spring-boot simple
 cd /work/demo-spring-boot
-mvn clean package
+mvn package
+mvn package -Pnative
+mv /work/demo-spring-boot/target/de.harald.test.demospringboot.demospringbootapplication /work/demo-spring-boot/target/demo-ce
 
 # demo spring-boot advanced
 cd /work/demo-spring-boot-jpa
-mvn clean package
+mvn package
+mvn package -Pnative
+mv /work/demo-spring-boot-jpa/target/de.harald.test.demospringboot.demospringbootapplication /work/demo-spring-boot-jpa/target/demo-ce
 
 # demo quarkus simple
 cd /work/demo-quarkus
